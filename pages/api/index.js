@@ -12,6 +12,6 @@ export default async function handler(req, res) {
   if (question) {
     const response = await api.sendMessage(question)
     console.log(response);
-    res.status(200).json({data :response.text})
+    res.status(200).json({data: response.text})
   }
 }

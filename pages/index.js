@@ -4,6 +4,7 @@ import * as Icon from 'react-icons/io5'
 import { useState } from 'react'
 import { Comment } from 'react-loader-spinner'
 import Logo from '../public/logo.png'
+import { stringify } from 'postcss'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -60,14 +61,14 @@ export default function Home() {
       <main className='flex flex-col w-full'>
         <form
           onSubmit={fetchResponse}
-          className="w-full mb-6 px-10 bottom-0 fixed"
+          className="w-full mb-6 lg:px-10 px-2 bottom-0 fixed"
         >
           <label for="search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Ask me everything</label>
           <div className="relative">
             <input
               type="text"
               id="text"
-              className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full p-4 lg:pl-10 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Type your question here..."
               required
               value={question}
@@ -99,7 +100,7 @@ export default function Home() {
         </form>
 
         <div className='w-full flex flex-col'>
-          <div className='w-full flex bg-slate-200 text-gray-800 py-5 px-10 shadow-lg'>
+          <div className='w-full flex bg-slate-200 text-gray-800 py-5 lg:px-10 px-2 shadow-lg'>
             <Icon.IoPersonCircleSharp size={26} />
             <p>
               {
@@ -114,7 +115,7 @@ export default function Home() {
 
           {
             !loading && response ?
-              <div className='w-full flex gap-2 items-start p-10'>
+              <div className='w-full flex gap-2 items-start lg:px-10 px-2 pt-5'>
                 <Image
                   src={Logo}
                   height={60}
@@ -127,7 +128,7 @@ export default function Home() {
                 </p>
               </div>
               :
-              <div className='w-full flex gap-2 items-start p-10'>
+              <div className='w-full flex gap-2 items-start lg:px-10 px-2 pt-5'>
                 <Image
                   src={Logo}
                   height={60}
