@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
 import * as Icon from 'react-icons/io5'
 import { useState } from 'react'
-import axios from 'axios'
-import { Comment, ThreeDots } from 'react-loader-spinner'
+import { Comment } from 'react-loader-spinner'
 import Logo from '../public/logo.png'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
