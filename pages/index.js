@@ -57,7 +57,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className='flex flex-col justify-between w-full bg-slate-800'>
+      <body className='flex flex-col justify-between w-full'>
+        
         {/* profile */}
         <div className='fixed h-[80px] w-full flex bg-slate-900 text-gray-50 py-5 lg:px-10 px-2 shadow-lg border-b'>
           <Image
