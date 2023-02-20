@@ -4,6 +4,7 @@ import * as Icon from 'react-icons/io5'
 import { useState } from 'react'
 import { Comment } from 'react-loader-spinner'
 import Logo from '../public/logo.png'
+import User from '../public/user.png'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -73,7 +74,7 @@ export default function Home() {
         </div>
 
         {/* Conversation */}
-        <div className='h-full pb-2 overflow-y-scroll'>
+        <div className='h-full pb-5'>
           {
             datas &&
             Object.keys(datas)
@@ -86,10 +87,13 @@ export default function Home() {
                   >
                     <div className='w-full flex items-start justify-end gap-2'>
                       <p className='py-2 px-5 bg-blue-500 rounded-l-xl rounded-b-xl'>{datas[key].question}</p>
-                      <Icon.IoPersonSharp
-                        size={32} 
-                        className="text-gray-400 bg-white h-10 w-10 object-cover rounded-full p-1"
-                        />
+                      <Image
+                        src={User}
+                        height={60}
+                        width={60}
+                        alt='openai-logo'
+                        className='bg-white h-10 w-10 object-cover rounded-full'
+                      />
                     </div>
                     <div className='w-full flex items-start justify-start gap-2'>
                       <Image
@@ -146,8 +150,7 @@ export default function Home() {
             </a>
           </div>
         </form>
-        <div className="bg-slate-900 p-2 border-t h-[100px] w-full lg:px-10 px-2 bottom-0">
-
+        <div className="p-2 h-[100px] w-full lg:px-10 px-2 bottom-0">
         </div>
       </body>
     </>
