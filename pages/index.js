@@ -11,44 +11,43 @@ const fetcher = (url) => fetch(url).then((res) => res.json())
 export default function Home() {
 
   const [question, setQuestion] = useState('');
-  const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const [questionArray] = useState([]);
-  const [responseArray] = useState([]);
-
-  const datas = {
-    question: questionArray,
-    response: responseArray,
-  }
+  const [datas, setData] = useState([]);
 
   function fetchResponse(e) {
 
     e.preventDefault();
+
     setLoading(true);
-    questionArray.push(question);
 
     const postData = async () => {
       const data = {
         question: question,
       };
 
-      const response = await fetch("/api", {
+      const fetchResponse = await fetch("/api", {
         method: "POST",
         body: JSON.stringify(data),
       });
-      setQuestion('')
-      return response.json();
+      return fetchResponse.json();
     };
 
-    postData().then((response) => {
-      const { data } = response;
+    postData().then((res) => {
+      const { data } = res;
 
-      setResponse(data);
-      responseArray.push(data);
+      const obj = { question: question, response: data }
+      console.log(obj);
+
+      datas.push(obj);
+
+      console.log(datas);
+
+      setQuestion('')
       setLoading(false);
     });
   }
+
 
   return (
     <>
@@ -58,10 +57,65 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='flex flex-col w-full'>
+      <main className='flex flex-col w-full bg-slate-800'>
+        <div className='fixed w-full flex bg-slate-900 text-gray-50 py-5 lg:px-10 px-2 shadow-lg border-b'>
+          <Image
+            src={Logo}
+            height={60}
+            width={60}
+            alt='openai-logo'
+            className='bg-white h-10 w-10 object-cover rounded-full'
+          />
+          <p className='py-2 px-5'>@Allpha_ChatBot</p>
+        </div>
+        <div className='w-full flex bg-slate-900 text-gray-50 py-5 lg:px-10 px-2 shadow-lg'>
+          <Image
+            src={Logo}
+            height={60}
+            width={60}
+            alt='openai-logo'
+            className='bg-white h-10 w-10 object-cover rounded-full'
+          />
+          <p className='py-2 px-5'>@Allpha_ChatBot</p>
+        </div>
+
+        <div className='h-[550px] pb-10 overflow-y-scroll'>
+          {
+            datas &&
+            Object.keys(datas)
+              .map((key, index) => {
+                console.log(key)
+                return (
+                  <div
+                    key={key}
+                    className='w-full flex flex-col gap-2 items-start lg:px-10 px-2 pt-5'
+                  >
+                    <div className='w-full flex items-start justify-end gap-2'>
+                      <p className='py-2 px-5 bg-blue-500 rounded-l-xl rounded-b-xl'>{datas[key].question}</p>
+                      <Icon.IoPersonSharp
+                        size={32} 
+                        className="text-gray-400 bg-white h-10 w-10 object-cover rounded-full p-1"
+                        />
+                    </div>
+                    <div className='w-full flex items-start justify-start gap-2'>
+                      <Image
+                        src={Logo}
+                        height={60}
+                        width={60}
+                        alt='openai-logo'
+                        className='bg-white h-10 w-10 object-cover rounded-full'
+                      />
+                      <p className='py-2 px-5 bg-slate-500 rounded-r-xl rounded-b-xl'>{datas[key].response}</p>
+                    </div>
+                  </div>
+                )
+              })
+          }
+        </div>
+
         <form
           onSubmit={fetchResponse}
-          className="w-full mb-6 lg:px-10 px-2 bottom-0 fixed"
+          className="bg-slate-900 p-5 border-t w-full lg:px-10 px-2 bottom-0 fixed"
         >
           <label for="search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Ask me everything</label>
           <div className="relative">
@@ -82,7 +136,7 @@ export default function Home() {
               >
                 <Icon.IoSendOutline
                   size={32}
-                  className="text-white hover:text-red-500"
+                  className="text-white hover:text-slate-500"
                 />
               </button>
             }
@@ -98,72 +152,6 @@ export default function Home() {
             </a>
           </div>
         </form>
-
-        <div className='w-full flex flex-col'>
-          <div className='w-full flex bg-slate-200 text-gray-800 py-5 lg:px-10 px-2 shadow-lg'>
-            <Icon.IoPersonCircleSharp size={26} />
-            <p>
-              {
-                question ? question
-                  :
-                  questionArray.length ? questionArray[questionArray.length - 1]
-                    :
-                    'Ask me something'
-              }
-            </p>
-          </div>
-
-          {
-            !loading && response ?
-              <div className='w-full flex gap-2 items-start lg:px-10 px-2 pt-5'>
-                <Image
-                  src={Logo}
-                  height={60}
-                  width={60}
-                  alt='openai-logo'
-                  className='bg-white h-10 w-10 object-cover rounded-full'
-                />
-                <p className='p-5 bg-slate-500 rounded-2xl'>
-                  {response && response}
-                </p>
-              </div>
-              :
-              <div className='w-full flex gap-2 items-start lg:px-10 px-2 pt-5'>
-                <Image
-                  src={Logo}
-                  height={60}
-                  width={60}
-                  alt='openai-logo'
-                  className='bg-white h-10 w-10 object-cover rounded-full'
-                />
-                <Comment
-                  visible={true}
-                  height="80"
-                  width="80"
-                  ariaLabel="comment-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="comment-wrapper"
-                  color="#fff"
-                  backgroundColor="#F4442E"
-                />
-              </div>
-          }
-
-          {/* {
-            questionArray &&
-            Object.keys(datas)
-              .map((key, index) => {
-                return (
-                  <div key={key}>
-                    <p></p>
-                  </div>
-                )
-              })
-          } */}
-          <div>
-
-          </div>
-        </div>
       </main>
     </>
   )
