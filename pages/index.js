@@ -4,7 +4,6 @@ import * as Icon from 'react-icons/io5'
 import { useState } from 'react'
 import { Comment } from 'react-loader-spinner'
 import Logo from '../public/logo.png'
-import { stringify } from 'postcss'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -57,18 +56,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='flex flex-col w-full bg-slate-800'>
-        <div className='fixed w-full flex bg-slate-900 text-gray-50 py-5 lg:px-10 px-2 shadow-lg border-b'>
-          <Image
-            src={Logo}
-            height={60}
-            width={60}
-            alt='openai-logo'
-            className='bg-white h-10 w-10 object-cover rounded-full'
-          />
-          <p className='py-2 px-5'>@Allpha_ChatBot</p>
-        </div>
-        <div className='w-full flex bg-slate-900 text-gray-50 py-5 lg:px-10 px-2 shadow-lg'>
+      <body className='flex flex-col justify-between w-full bg-slate-800'>
+        {/* profile */}
+        <div className='fixed h-[80px] w-full flex bg-slate-900 text-gray-50 py-5 lg:px-10 px-2 shadow-lg border-b'>
           <Image
             src={Logo}
             height={60}
@@ -79,7 +69,11 @@ export default function Home() {
           <p className='py-2 px-5'>@Allpha_ChatBot</p>
         </div>
 
-        <div className='h-[550px] pb-10 overflow-y-scroll'>
+        <div className='h-[80px] w-full flex bg-slate-900 text-gray-50 py-5 lg:px-10 px-2 shadow-lg border-b'>
+        </div>
+
+        {/* Conversation */}
+        <div className='h-full pb-2 overflow-y-scroll'>
           {
             datas &&
             Object.keys(datas)
@@ -115,7 +109,7 @@ export default function Home() {
 
         <form
           onSubmit={fetchResponse}
-          className="bg-slate-900 p-5 border-t w-full lg:px-10 px-2 bottom-0 fixed"
+          className="bg-slate-900 p-2 border-t h-[100px] w-full lg:px-10 px-2 bottom-0 fixed"
         >
           <label for="search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Ask me everything</label>
           <div className="relative">
@@ -141,7 +135,7 @@ export default function Home() {
               </button>
             }
           </div>
-          <div className='text-center flex text-xs mt-4 gap-2'>
+          <div className='text-center flex text-xs mt-2 gap-2'>
             <p className=''>Developer contact :</p>
             <a
               href="https://t.me/andrianarivoalpha"
@@ -152,7 +146,10 @@ export default function Home() {
             </a>
           </div>
         </form>
-      </main>
+        <div className="bg-slate-900 p-2 border-t h-[100px] w-full lg:px-10 px-2 bottom-0">
+
+        </div>
+      </body>
     </>
   )
 }
