@@ -4,11 +4,10 @@ import * as Icon from 'react-icons/io5'
 import { useState } from 'react'
 import Logo from '../public/logo.png'
 import User from '../public/user.png'
-import Navbar from '@/components/Navbar'
+import Link from 'next/link'
+import { ThreeDots } from 'react-loader-spinner'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
-
-export default function Home() {
+export default function ChatBot() {
 
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
@@ -20,6 +19,9 @@ export default function Home() {
     e.preventDefault();
 
     setLoading(true);
+
+    const obj = { question: question, response: 'loading' }
+    datas.push(obj);
 
     const postData = async () => {
       const data = {
@@ -36,18 +38,25 @@ export default function Home() {
     postData().then((res) => {
       const { data } = res;
 
-      const obj = { question: question, response: data }
-      console.log(obj);
-
-      datas.push(obj);
-
-      console.log(datas);
+      datas[datas.length - 1].response = data
 
       setQuestion('')
       setLoading(false);
     });
   }
 
+  const Loader = <ThreeDots
+    height="20"
+    width="40"
+    radius="2"
+    color="white"
+    ariaLabel="three-dots-loading"
+    wrapperStyle={{}}
+    wrapperClassName=""
+    visible={true}
+  />
+
+  console.log(datas);
 
   return (
     <>
@@ -57,9 +66,24 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className='flex flex-col justify-between w-full'>
-        
-        <Navbar />
+      <body className='flex flex-col justify-start w-full min-h-screen bg-slate-800'>
+        <div className='fixed flex bg-slate-900 border-b justify-between items-center w-full h-20 p-5'>
+          <Link href='/'>
+            <Icon.IoArrowBackOutline size={32} />
+          </Link>
+          <div className='flex gap-1 items-center'>
+            <Image
+              src={Logo} 
+              height={60}
+              width={60}
+              alt='logo'
+              className=' bg-white h-10 w-10 object-cover rounded-full'
+            />
+            <p className='text-lg font-semibold'>@allpha_chatgpt</p>
+          </div>
+          
+        </div>
+        <div className='flex bg-slate-900 border-b justify-between items-center w-full h-20 p-5' />
 
         {/* Conversation */}
         <div className='h-full pb-5'>
@@ -91,7 +115,11 @@ export default function Home() {
                         alt='openai-logo'
                         className='bg-white h-10 w-10 object-cover rounded-full'
                       />
-                      <p className='py-2 px-5 bg-slate-500 rounded-r-xl rounded-b-xl'>{datas[key].response}</p>
+                      <p className='py-2 px-5 bg-slate-500 rounded-r-xl rounded-b-xl'>
+                        {
+                          datas[key].response === 'loading' ? Loader : datas[key].response
+                        }
+                      </p>
                     </div>
                   </div>
                 )

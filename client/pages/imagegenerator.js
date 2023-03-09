@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import * as Icon from 'react-icons/io5'
 import { useState } from 'react'
-import Navbar from '@/components/Navbar'
 import { BallTriangle } from 'react-loader-spinner'
+import Link from 'next/link'
+import Logo from '../public/logo.png'
 
 const ImageGenerator = () => {
   const [question, setQuestion] = useState('');
@@ -51,9 +52,23 @@ const ImageGenerator = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className='flex flex-col justify-between w-full'>
-
-        <Navbar />
+      <body className='flex flex-col justify-between w-full min-h-screen bg-slate-800'>
+        <div className='fixed flex bg-slate-900 border-b justify-between items-center w-full h-20 p-5'>
+          <Link href='/'>
+            <Icon.IoArrowBackOutline size={32} />
+          </Link>
+          <div className='flex gap-1 items-center'>
+            <Image
+              src={Logo}
+              height={60}
+              width={60}
+              alt='logo'
+              className=' bg-white h-10 w-10 object-cover rounded-full'
+            />
+            <p className='text-lg font-semibold'>@image_generator</p>
+          </div>
+        </div>
+        <div className='flex bg-slate-900 border-b justify-between items-center w-full h-20 p-5' />
 
         {
           loading &&
@@ -62,13 +77,13 @@ const ImageGenerator = () => {
               height={100}
               width={100}
               radius={5}
-              color="#4fa94d"
+              color="white"
               ariaLabel="ball-triangle-loading"
               wrapperClass={{}}
               wrapperStyle=""
               visible={true}
             />
-            <p className='text-3xl font-semibold animate-bounce mt-5'>Loading...</p>
+            <p className='text-3xl font-semibold animate-bounce mt-5 uppercase'>Loading</p>
           </div>
         }
 

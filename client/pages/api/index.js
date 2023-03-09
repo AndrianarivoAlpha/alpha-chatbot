@@ -4,7 +4,6 @@ const api = new ChatGPTAPI({
   apiKey: process.env.OPENAI_API_KEY
 })
 
-
 export default async function handler(req, res) {
 
   const { question } = JSON.parse(req.body);
