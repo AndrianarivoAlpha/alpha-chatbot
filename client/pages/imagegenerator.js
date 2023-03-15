@@ -11,6 +11,7 @@ const ImageGenerator = () => {
   const [loading, setLoading] = useState(false);
 
   const [link, setLink] = useState('');
+  const [images, setImages] = useState([]);
 
   function fetchResponse(e) {
 
@@ -37,12 +38,18 @@ const ImageGenerator = () => {
       console.log(data.toString());
 
       setLink(`${data}`);
+      images.push(`${data}`);
 
       setQuestion('')
       setLoading(false);
+      window.scrollTo({
+        top: 500000,
+        behavior: 'smooth'
+      });
     });
   }
 
+  console.log(images);
 
   return (
     <>
@@ -52,32 +59,32 @@ const ImageGenerator = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className='flex flex-col justify-between w-full min-h-screen bg-slate-800'>
-        <div className='fixed flex bg-slate-900 border-b justify-between items-center w-full h-20 p-5'>
+      <body className='flex flex-col justify-between w-full min-h-screen bg-white'>
+        <div className='fixed flex bg-slate-900 border-b justify-between items-center w-full h-10 p-2'>
           <Link href='/'>
             <Icon.IoArrowBackOutline size={32} />
           </Link>
           <div className='flex gap-1 items-center'>
             <Image
               src={Logo}
-              height={60}
-              width={60}
+              height={40}
+              width={40}
               alt='logo'
-              className=' bg-white h-10 w-10 object-cover rounded-full'
+              className=' bg-white h-5 w-5 object-cover rounded-full'
             />
-            <p className='text-lg font-semibold'>@image_generator</p>
+            <p className='font-semibold uppercase'>image_generator</p>
           </div>
         </div>
-        <div className='flex bg-slate-900 border-b justify-between items-center w-full h-20 p-5' />
+        <div className='flex w-full h-10 p-2' />
 
         {
           loading &&
-          <div className='w-full flex flex-col items-center justify-center mt-5'>
+          <div className='w-screen h-screen absolute flex flex-col items-center justify-center mt-5'>
             <BallTriangle
               height={100}
               width={100}
               radius={5}
-              color="white"
+              color="gray"
               ariaLabel="ball-triangle-loading"
               wrapperClass={{}}
               wrapperStyle=""
@@ -87,31 +94,35 @@ const ImageGenerator = () => {
           </div>
         }
 
-        <div className='h-full pb-5'>
+        <div className='h-full w-screen flex flex-row flex-wrap items-center justify-center gap-2'>
           {
-            link && !loading &&
-            <div className='w-full mt-2'>
-              <Image
-                src={link}
-                height={500}
-                width={500}
-                alt='imagegenerated'
-                className='m-auto'
-              />
-            </div>
+            link && images &&
+
+            images.map((image, index) => (
+              <div
+                key={index}
+              >
+                <Image
+                  src={image}
+                  height={500}
+                  width={500}
+                  alt='image generated'
+                  className='m-auto rounded-md gap-2 w-80 h-80 object-cover'
+                />
+              </div>
+            ))
           }
         </div>
 
-        <form
-          onSubmit={fetchResponse}
-          className="bg-slate-900 p-2 border-t h-[100px] w-full lg:px-10 px-2 bottom-0 fixed"
-        >
-          <label for="search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Ask me everything</label>
-          <div className="relative">
+        <div className='bg-slate-900 p-2 border-t h-[80px] w-full lg:px-10 px-2 bottom-0 fixed'>
+          <form
+            onSubmit={fetchResponse}
+            className="flex w-full items-center justify-between gap-2"
+          >
             <input
               type="text"
               id="text"
-              className="block w-full p-4 lg:pl-10 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full py-2.5 lg:pl-10 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Type your imagination here..."
               required
               value={question}
@@ -121,15 +132,12 @@ const ImageGenerator = () => {
               question &&
               <button
                 type="submit"
-                className="text-white absolute right-5 bottom-2.5"
+                className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 uppercase"
               >
-                <Icon.IoSendOutline
-                  size={32}
-                  className="text-white hover:text-slate-500"
-                />
+                Generate
               </button>
             }
-          </div>
+          </form>
           <div className='text-center flex text-xs mt-2 gap-2'>
             <p className=''>Developer contact :</p>
             <a
@@ -140,8 +148,9 @@ const ImageGenerator = () => {
               Telegram
             </a>
           </div>
-        </form>
-        <div className="p-2 h-[100px] w-full lg:px-10 px-2 bottom-0">
+        </div>
+
+        <div className="p-2 h-[80px] w-full lg:px-10 px-2 bottom-0">
         </div>
       </body>
     </>
