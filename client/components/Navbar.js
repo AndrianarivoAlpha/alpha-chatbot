@@ -7,7 +7,7 @@ import Logo from '../public/logo.png'
 const Navbar = () => {
   return (
     <>
-      <nav className='mt-10 flex items-center justify-center gap-2' >
+      <nav className='w-full px-2 mt-10 flex items-center justify-center gap-2' >
         <Link
           href='/chatbot'
           className='flex justify-center items-center'
