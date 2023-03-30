@@ -18,6 +18,11 @@ export default function ChatBot() {
 
     e.preventDefault();
 
+    window.scrollTo({
+      top: 100000,
+      behavior: 'smooth'
+    });
+
     setLoading(true);
 
     const obj = { question: question, response: 'loading' }
@@ -28,7 +33,7 @@ export default function ChatBot() {
         question: question,
       };
 
-      const fetchResponse = await fetch("/api", {
+      const fetchResponse = await fetch("/api/gpt4", {
         method: "POST",
         body: JSON.stringify(data),
       });
@@ -42,6 +47,11 @@ export default function ChatBot() {
 
       setQuestion('')
       setLoading(false);
+
+      window.scrollTo({
+        top: 100000,
+        behavior: 'smooth'
+      });
     });
   }
 
@@ -56,8 +66,6 @@ export default function ChatBot() {
     visible={true}
   />
 
-  console.log(datas);
-
   return (
     <>
       <Head>
@@ -66,14 +74,14 @@ export default function ChatBot() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className='flex flex-col justify-start w-full min-h-screen bg-white'>
+      <main className='flex flex-col justify-start w-full min-h-screen bg-white'>
         <div className='fixed flex bg-slate-900 border-b justify-between items-center w-full h-10 p-5'>
           <Link href='/'>
             <Icon.IoArrowBackOutline size={32} />
           </Link>
           <div className='flex gap-1 items-center'>
             <Image
-              src={Logo} 
+              src={Logo}
               height={40}
               width={40}
               alt='logo'
@@ -81,7 +89,8 @@ export default function ChatBot() {
             />
             <p className='font-semibold uppercase'>chatBot</p>
           </div>
-          
+          <div className=' flex bg-slate-900 border-b justify-between items-center w-full h-10 p-5' />
+
         </div>
         <div className='w-full h-10 p-5' />
 
@@ -91,7 +100,6 @@ export default function ChatBot() {
             datas &&
             Object.keys(datas)
               .map((key, index) => {
-                console.log(key)
                 return (
                   <div
                     key={key}
@@ -115,11 +123,11 @@ export default function ChatBot() {
                         alt='openai-logo'
                         className='bg-white h-10 w-10 object-cover rounded-full'
                       />
-                      <p className='py-2 px-5 bg-slate-500 rounded-r-xl rounded-b-xl'>
+                      <div className='py-2 px-5 bg-slate-500 rounded-r-xl rounded-b-xl'>
                         {
-                          datas[key].response === 'loading' ? Loader : datas[key].response
+                          datas[key].response === 'loading' ? Loader : <p> {datas[key].response} </p>
                         }
-                      </p>
+                      </div>
                     </div>
                   </div>
                 )
@@ -152,7 +160,7 @@ export default function ChatBot() {
                 />
               </button>
             }
-            
+
           </form>
           <div className='text-center flex text-xs mt-2 gap-2'>
             <p className=''>Developer contact :</p>
@@ -164,11 +172,11 @@ export default function ChatBot() {
               Telegram
             </a>
           </div>
-</div>
-        
+        </div>
+
         <div className="p-2 h-[80px] w-full lg:px-10 px-2 bottom-0">
         </div>
-      </body>
+      </main>
     </>
   )
 }

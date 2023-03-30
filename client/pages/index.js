@@ -13,11 +13,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className='w-full h-screen flex flex-col items-center justify-center m-auto text-center bg-slate-800'>
+      <main className='w-full h-screen flex flex-col items-center justify-center m-auto text-center bg-slate-800'>
         <h1 className='uppercase text-2xl font-bold p-4'>Chatbot and Image generator</h1>
         <p>This project is using OpenAI API</p>
         <Navbar />
-      </body>
+      </main>
     </>
   )
 }
