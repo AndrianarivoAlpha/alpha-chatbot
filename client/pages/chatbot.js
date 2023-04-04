@@ -74,7 +74,7 @@ export default function ChatBot() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='flex flex-col justify-start w-full min-h-screen bg-white'>
+      <main className='flex flex-col justify-start w-full min-h-screen bg-slate-800'>
         <div className='fixed flex bg-slate-900 border-b justify-between items-center w-full h-10 p-5'>
           <Link href='/'>
             <Icon.IoArrowBackOutline size={32} />
