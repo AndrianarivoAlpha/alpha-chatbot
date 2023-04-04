@@ -24,3 +24,7 @@ a {
 		color-scheme: dark;
 	}
 }
+
+.bokeh {
+	background-image: radial-gradient(circle, #0035679a 10%, #1b40478e 60%, #00d5ff1e 90%);
+}

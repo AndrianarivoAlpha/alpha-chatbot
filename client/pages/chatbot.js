@@ -91,8 +91,7 @@ export default function ChatBot() {
           </div>
           
         </div>
-        <div className=' flex bg-slate-900 border-b justify-between items-center w-full h-10 p-5' />
-        <div className='w-full h-10 p-5' />
+        <div className=' flex bg-slate-900 border-b justify-between items-center w-full h-10 p-5'/>
 
         {/* Conversation */}
         <div className='h-full pb-5'>
