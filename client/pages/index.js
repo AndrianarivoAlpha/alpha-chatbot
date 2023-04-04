@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Navbar from '@/components/Navbar'
 import Bot from "../assets/bot.png"
 import Image from 'next/image'
 import Link from 'next/link'
