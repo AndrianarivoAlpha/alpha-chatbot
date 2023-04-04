@@ -16,7 +16,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='w-full h-screen flex flex-col items-center justify-center m-auto text-center bg-slate-800'>
+      <main className='w-full h-screen flex flex-col items-center justify-center m-auto text-center bg-slate-900'>
         <Image 
           src={Bot}
           height={150}
