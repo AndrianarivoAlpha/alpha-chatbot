@@ -89,9 +89,9 @@ export default function ChatBot() {
             />
             <p className='font-semibold uppercase'>chatBot</p>
           </div>
-          <div className=' flex bg-slate-900 border-b justify-between items-center w-full h-10 p-5' />
-
+          
         </div>
+        <div className=' flex bg-slate-900 border-b justify-between items-center w-full h-10 p-5' />
         <div className='w-full h-10 p-5' />
 
         {/* Conversation */}
