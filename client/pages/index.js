@@ -22,7 +22,7 @@ export default function Home() {
           height={150}
           width={150}
           alt='Bot'
-          className='h-[150px] w-[150px] object-cover rounded-full bg-gray-900 border'
+          className='h-[150px] bg-gray-900'
         />
         <div className='lg:w-[400px] w-full mt-10 flex flex-col items-center'>
           <h1 className='text-3xl font-semibold p-4'>Hi, I'm Your intelligent conversational companion</h1>
