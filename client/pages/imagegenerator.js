@@ -4,7 +4,7 @@ import * as Icon from 'react-icons/io5'
 import { useState } from 'react'
 import { BallTriangle } from 'react-loader-spinner'
 import Link from 'next/link'
-import Logo from '../public/logo.png'
+import Logo from '../assets/bot.png'
 
 const ImageGenerator = () => {
   const [question, setQuestion] = useState('');
