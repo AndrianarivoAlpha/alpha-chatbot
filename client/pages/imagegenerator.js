@@ -35,7 +35,7 @@ const ImageGenerator = () => {
 
       const { data } = res;
 
-      console.log(data.toString());
+      //console.log(data.toString());
 
       setLink(`${data}`);
       images.push(`${data}`);
