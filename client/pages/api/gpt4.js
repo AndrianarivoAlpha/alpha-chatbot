@@ -17,8 +17,9 @@ export default async function handler(req, res) {
       });
       res.status(200).send({ data: completion.data.choices[0].message.content })
     } catch (error) {
-      if (error) console.log(error);
-      res.status(error.status).json({ data: error.statusText });
+        console.log(error);
+        const errorMsg = "Une erreur s'est produite, veuillez reesayer ulterieurement."
+        res.status(error.status).send({ data: errorMsg });
     }
   }
 }
