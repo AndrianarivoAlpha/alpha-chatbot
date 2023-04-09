@@ -39,7 +39,7 @@ export default function Home() {
           <Link href={'/imagegenerator'}>
             <button
               type="button"
-              className="border-2 border-orange-600 rounded-lg px-3 py-2 text-orange-200 cursor-pointer bg-orange-500 hover:bg-orange-600 hover:text-orange-200"
+              className="border-2 border-orange-600 rounded-lg px-3 py-2 text-orange-100 cursor-pointer bg-orange-500 hover:bg-orange-600 hover:text-orange-200"
             >
               GENERATE IMAGE
             </button>

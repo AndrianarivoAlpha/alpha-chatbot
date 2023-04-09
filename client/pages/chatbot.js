@@ -75,23 +75,11 @@ export default function ChatBot() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='flex flex-col justify-start w-full min-h-screen bg-slate-800'>
-        <div className='fixed flex bg-slate-900 border-b justify-between items-center w-full h-10 p-5'>
+        <div className='fixed flex items-start w-full h-10 p-5'>
           <Link href='/'>
             <Icon.IoArrowBackOutline size={32} />
           </Link>
-          <div className='flex gap-1 items-center'>
-            <Image
-              src={Logo}
-              height={40}
-              width={40}
-              alt='logo'
-              className=' bg-white h-5 w-5 object-cover rounded-full'
-            />
-            <p className='font-semibold uppercase'>chatBot</p>
-          </div>
-          
         </div>
-        <div className=' flex bg-slate-900 border-b justify-between items-center w-full h-10 p-5' />
 
         {/* Conversation */}
         <div className='h-full pb-5'>

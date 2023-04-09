@@ -2,9 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import * as Icon from 'react-icons/io5'
 import { useState } from 'react'
-import { BallTriangle } from 'react-loader-spinner'
+import { Oval } from 'react-loader-spinner'
 import Link from 'next/link'
-import Logo from '../assets/bot.png'
 
 const ImageGenerator = () => {
   const [question, setQuestion] = useState('');
@@ -49,7 +48,7 @@ const ImageGenerator = () => {
     });
   }
 
-  console.log(images);
+  //console.log(images);
 
   return (
     <>
@@ -60,37 +59,29 @@ const ImageGenerator = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='flex flex-col justify-between w-full min-h-screen bg-gray-800'>
-        <div className='fixed flex bg-slate-900 border-b justify-between items-center w-full h-10 p-2'>
+        <div className='fixed flex items-start w-full h-10 p-2'>
           <Link href='/'>
             <Icon.IoArrowBackOutline size={32} />
           </Link>
-          <div className='flex gap-1 items-center'>
-            <Image
-              src={Logo}
-              height={40}
-              width={40}
-              alt='logo'
-              className=' bg-white h-5 w-5 object-cover rounded-full'
-            />
-            <p className='font-semibold uppercase'>image_generator</p>
-          </div>
         </div>
         <div className='flex w-full h-10 p-2' />
 
         {
           loading &&
           <div className='w-screen h-screen absolute flex flex-col items-center justify-center mt-5'>
-            <BallTriangle
-              height={100}
-              width={100}
-              radius={5}
-              color="gray"
-              ariaLabel="ball-triangle-loading"
-              wrapperClass={{}}
-              wrapperStyle=""
-              visible={true}
-            />
-            <p className='text-3xl font-semibold animate-bounce mt-5 uppercase'>Loading</p>
+              <Oval
+                height={80}
+                width={80}
+                color="#fff"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel='oval-loading'
+                secondaryColor="#fff5"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+
+              />
           </div>
         }
 
