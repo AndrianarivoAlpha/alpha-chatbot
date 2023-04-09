@@ -27,13 +27,21 @@ export default function Home() {
           <h1 className='text-3xl font-semibold p-4'>Hi, I'm Your intelligent conversational companion</h1>
           <p className='font-thin text-center'>This project is using OpenAI API</p>
         </div>
-        <div className='mt-20'>
+        <div className='mt-20 flex flex-col items-center gap-1'>
           <Link href={'/chatbot'}>
             <button
               type="button"
               className="border-2 border-blue-600 rounded-lg px-3 py-2 text-blue-400 cursor-pointer hover:bg-blue-600 hover:text-blue-200"
             >
               START CHAT
+            </button>
+          </Link>
+          <Link href={'/imagegenerator'}>
+            <button
+              type="button"
+              className="border-2 border-orange-600 rounded-lg px-3 py-2 text-orange-200 cursor-pointer bg-orange-500 hover:bg-orange-600 hover:text-orange-200"
+            >
+              GENERATE IMAGE
             </button>
           </Link>
         </div>
