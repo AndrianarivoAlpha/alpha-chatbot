@@ -58,7 +58,7 @@ const ImageGenerator = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='flex flex-col justify-between w-full min-h-screen bg-gray-800'>
+      <main className='flex flex-col justify-between w-full h-full'>
         <div className='fixed flex items-start w-full h-10 p-2'>
           <Link href='/'>
             <Icon.IoArrowBackOutline size={32} />

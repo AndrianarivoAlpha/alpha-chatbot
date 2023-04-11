@@ -21,7 +21,7 @@ export default function Home() {
           height={150}
           width={150}
           alt='Bot'
-          className='h-[150px] bg-gray-900'
+          className='h-[150px]'
         />
         <div className='lg:w-[400px] w-full mt-10 flex flex-col items-center'>
           <h1 className='text-3xl font-semibold p-4'>Hi, I'm Your intelligent conversational companion</h1>
@@ -31,7 +31,7 @@ export default function Home() {
           <Link href={'/chatbot'}>
             <button
               type="button"
-              className="border-2 border-blue-600 rounded-lg px-3 py-2 text-blue-400 cursor-pointer hover:bg-blue-600 hover:text-blue-200"
+              className="w-[200px] border-2 border-blue-600 rounded-lg px-3 py-2 text-blue-400 cursor-pointer hover:bg-blue-600 hover:text-blue-200"
             >
               START CHAT
             </button>
@@ -39,7 +39,7 @@ export default function Home() {
           <Link href={'/imagegenerator'}>
             <button
               type="button"
-              className="border-2 border-orange-600 rounded-lg px-3 py-2 text-orange-100 cursor-pointer bg-orange-500 hover:bg-orange-600 hover:text-orange-200"
+              className="w-[200px] rounded-lg px-3 py-2 text-orange-100 cursor-pointer bg-orange-500 hover:bg-orange-600 hover:text-orange-200"
             >
               GENERATE IMAGE
             </button>
