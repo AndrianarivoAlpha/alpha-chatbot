@@ -3,7 +3,6 @@ import Bot from "../assets/bot.png"
 import Image from 'next/image'
 import Link from 'next/link'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export default function Home() {
 
