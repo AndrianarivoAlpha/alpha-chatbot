@@ -24,22 +24,22 @@ export default function Home() {
           className='h-[150px]'
         />
         <div className='lg:w-[400px] w-full mt-10 flex flex-col items-center'>
-          <h1 className='text-3xl font-semibold p-4'>Hi, I'm Your intelligent conversational companion</h1>
+          <h1 className='text-3xl font-semibold p-4'>Hi, I'm Your intelligent conversational companion!</h1>
           <p className='font-thin text-center'>This project is using OpenAI API</p>
         </div>
-        <div className='mt-20 flex flex-col items-center gap-1'>
-          <Link href={'/chatbot'}>
+        <div className='md:w-auto w-full mt-20 flex flex-col items-center gap-3 px-5'>
+          <Link href={'/chatbot'} className='w-full'>
             <button
               type="button"
-              className="w-[200px] border-2 border-blue-600 rounded-lg px-3 py-2 text-blue-400 cursor-pointer hover:bg-blue-600 hover:text-blue-200"
+              className="md:w-[300px] w-full border-2 border-blue-600 rounded-2xl px-3 py-3 text-blue-400 cursor-pointer hover:bg-blue-600 hover:text-blue-200"
             >
               START CHAT
             </button>
           </Link>
-          <Link href={'/imagegenerator'}>
+          <Link href={'/imagegenerator'} className='w-full'>
             <button
               type="button"
-              className="w-[200px] rounded-lg px-3 py-2 text-orange-100 cursor-pointer bg-orange-500 hover:bg-orange-600 hover:text-orange-200"
+              className="md:w-[300px] w-full rounded-2xl px-3 py-3 text-orange-100 cursor-pointer bg-orange-500 hover:bg-orange-600 hover:text-orange-200"
             >
               GENERATE IMAGE
             </button>

@@ -33,7 +33,7 @@ export default function ChatBot() {
         question: question,
       };
 
-      const fetchResponse = await fetch("/api/gpt4", {
+      const fetchResponse = await fetch("/api", {
         method: "POST",
         body: JSON.stringify(data),
       });
